@@ -120,11 +120,11 @@ const AccountPage: React.FC = () => {
             <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
               {activeTab === 'profile' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Profile Information</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Profile Information</h3>
                   <form className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           First Name
                         </label>
                         <input
@@ -134,7 +134,7 @@ const AccountPage: React.FC = () => {
                         />
                       </div>
                       <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-2">
+                        <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                           Last Name
                         </label>
                         <input
@@ -145,7 +145,7 @@ const AccountPage: React.FC = () => {
                       </div>
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Email
                       </label>
                       <input
@@ -155,7 +155,7 @@ const AccountPage: React.FC = () => {
                       />
                     </div>
                     <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-2">
+                      <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
                         Phone
                       </label>
                       <input
@@ -171,7 +171,7 @@ const AccountPage: React.FC = () => {
 
               {activeTab === 'orders' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Order History</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Order History</h3>
                   {orders.length === 0 ? (
                     <div className="text-center py-12">
                       <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -219,7 +219,7 @@ const AccountPage: React.FC = () => {
 
               {activeTab === 'wishlist' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Wishlist</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Wishlist</h3>
                   {wishlist.length === 0 ? (
                     <div className="text-center py-12">
                       <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -250,7 +250,7 @@ const AccountPage: React.FC = () => {
 
               {activeTab === 'addresses' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Shipping Addresses</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Shipping Addresses</h3>
                   {addresses.length === 0 && !showAddressForm ? (
                     <div className="text-center py-12">
                       <MapPin className="w-16 h-16 text-gray-300 mx-auto mb-4" />
@@ -293,7 +293,7 @@ const AccountPage: React.FC = () => {
 
               {activeTab === 'payment' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Payment Methods</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Payment Methods</h3>
                   <div className="text-center py-12">
                     <CreditCard className="w-16 h-16 text-gray-300 mx-auto mb-4" />
                     <p className="text-gray-500">No payment methods saved</p>
@@ -304,26 +304,26 @@ const AccountPage: React.FC = () => {
 
               {activeTab === 'settings' && (
                 <div>
-                  <h3 className="text-lg font-semibold text-gray-900 mb-6">Account Settings</h3>
+                  <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-6">Account Settings</h3>
                   <div className="space-y-6">
                     <div className="flex items-center justify-between py-4 border-b border-gray-200">
                       <div>
-                        <h4 className="font-medium text-gray-900">Email Notifications</h4>
-                        <p className="text-sm text-gray-500">Receive updates about your orders</p>
+                        <h4 className="font-medium text-gray-900 dark:text-gray-100">Email Notifications</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">Receive updates about your orders</p>
                       </div>
                       <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
                     </div>
                     <div className="flex items-center justify-between py-4 border-b border-gray-200">
                       <div>
-                        <h4 className="font-medium text-gray-900">Marketing Emails</h4>
-                        <p className="text-sm text-gray-500">Receive promotional offers and updates</p>
+                        <h4 className="font-medium text-gray-900 dark:text-gray-100">Marketing Emails</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">Receive promotional offers and updates</p>
                       </div>
                       <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
                     </div>
                     <div className="flex items-center justify-between py-4">
                       <div>
-                        <h4 className="font-medium text-gray-900">SMS Notifications</h4>
-                        <p className="text-sm text-gray-500">Receive order updates via SMS</p>
+                        <h4 className="font-medium text-gray-900 dark:text-gray-100">SMS Notifications</h4>
+                        <p className="text-sm text-gray-500 dark:text-gray-300">Receive order updates via SMS</p>
                       </div>
                       <input type="checkbox" className="rounded border-gray-300 text-blue-600 focus:ring-blue-500" />
                     </div>

@@ -12,11 +12,11 @@ const HomePage: React.FC = () => {
       <section className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 mb-6">
+            <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
               Discover Your Next
               <span className="text-blue-600 block">Favorite Product</span>
             </h1>
-            <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-gray-600 dark:text-gray-300 mb-8 max-w-2xl mx-auto">
               Shop the latest trends and timeless classics with our curated collection of premium products. Quality you can trust, prices you'll love.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
@@ -42,29 +42,29 @@ const HomePage: React.FC = () => {
               <div className="inline-flex items-center justify-center w-12 h-12 bg-blue-100 rounded-lg mb-4">
                 <Truck className="w-6 h-6 text-blue-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Free Shipping</h3>
-              <p className="text-gray-600">Free shipping on orders over $50</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Free Shipping</h3>
+              <p className="text-gray-600 dark:text-gray-300">Free shipping on orders over $50</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-green-100 rounded-lg mb-4">
                 <Shield className="w-6 h-6 text-green-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Secure Payment</h3>
-              <p className="text-gray-600">Your payment information is safe</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Secure Payment</h3>
+              <p className="text-gray-600 dark:text-gray-300">Your payment information is safe</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-purple-100 rounded-lg mb-4">
                 <Headphones className="w-6 h-6 text-purple-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">24/7 Support</h3>
-              <p className="text-gray-600">Get help whenever you need it</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">24/7 Support</h3>
+              <p className="text-gray-600 dark:text-gray-300">Get help whenever you need it</p>
             </div>
             <div className="text-center">
               <div className="inline-flex items-center justify-center w-12 h-12 bg-orange-100 rounded-lg mb-4">
                 <RefreshCw className="w-6 h-6 text-orange-600" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">Easy Returns</h3>
-              <p className="text-gray-600">30-day return policy</p>
+              <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-2">Easy Returns</h3>
+              <p className="text-gray-600 dark:text-gray-300">30-day return policy</p>
             </div>
           </div>
         </div>
@@ -74,8 +74,8 @@ const HomePage: React.FC = () => {
       <section className="py-16 bg-gray-50 dark:bg-gray-900">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Shop by Category</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Explore our wide range of categories to find exactly what you're looking for
             </p>
           </div>
@@ -106,8 +106,8 @@ const HomePage: React.FC = () => {
       <section className="py-16 bg-white dark:bg-gray-800">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Featured Products</h2>
-            <p className="text-gray-600 max-w-2xl mx-auto">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Featured Products</h2>
+            <p className="text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
               Discover our handpicked selection of premium products
             </p>
           </div>
