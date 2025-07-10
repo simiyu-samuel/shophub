@@ -34,7 +34,7 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
     : 0;
 
   return (
-    <div className={`group bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden hover:shadow-lg transition-shadow duration-300 ${className}`}>
+    <div className={`group bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 overflow-hidden hover:shadow-lg transition-shadow duration-300 ${className}`}>
       <Link to={`/product/${product.id}`} className="block">
         <div className="relative aspect-square overflow-hidden">
           <img
@@ -86,26 +86,26 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
 
         <div className="p-4">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-sm text-gray-500">{product.brand}</span>
+            <span className="text-sm text-gray-500 dark:text-gray-400">{product.brand}</span>
             <StarRating rating={product.rating} />
           </div>
           
-          <h3 className="font-semibold text-gray-900 mb-2 line-clamp-2 group-hover:text-blue-600 transition-colors">
+          <h3 className="font-semibold text-gray-900 dark:text-gray-100 mb-2 line-clamp-2 group-hover:text-blue-600 dark:group-hover:text-yellow-400 transition-colors">
             {product.name}
           </h3>
           
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-2">
-              <span className="text-lg font-bold text-gray-900">
+              <span className="text-lg font-bold text-gray-900 dark:text-gray-100">
                 ${product.price.toFixed(2)}
               </span>
               {product.originalPrice && (
-                <span className="text-sm text-gray-500 line-through">
+                <span className="text-sm text-gray-500 dark:text-gray-400 line-through">
                   ${product.originalPrice.toFixed(2)}
                 </span>
               )}
             </div>
-            <span className="text-sm text-gray-500">
+            <span className="text-sm text-gray-500 dark:text-gray-400">
               ({product.reviewCount} reviews)
             </span>
           </div>
