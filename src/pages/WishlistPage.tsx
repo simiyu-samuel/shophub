@@ -21,7 +21,7 @@ const WishlistPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between mb-8">
           <h1 className="text-3xl font-bold text-gray-900">My Wishlist</h1>
@@ -31,7 +31,7 @@ const WishlistPage: React.FC = () => {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {wishlist.map(product => (
-            <div key={product.id} className="bg-white rounded-lg shadow-sm border border-gray-200 p-4 flex flex-col">
+            <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 flex flex-col">
               <Link to={`/product/${product.id}`} className="block mb-4">
                 <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
                 <h3 className="font-semibold text-gray-900 line-clamp-2">{product.name}</h3>

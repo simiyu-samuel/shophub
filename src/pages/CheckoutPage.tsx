@@ -61,7 +61,7 @@ const CheckoutPage: React.FC = () => {
   const total = totalPrice + tax;
 
   return (
-    <div className="min-h-screen bg-gray-50 py-8">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center mb-8">
           <Link to="/cart" className="flex items-center text-gray-600 hover:text-gray-900">
@@ -74,7 +74,7 @@ const CheckoutPage: React.FC = () => {
           {/* Checkout Form */}
           <div className="space-y-8">
             {/* Contact Information */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Contact Information</h2>
               <div className="space-y-4">
                 <div>
@@ -94,7 +94,7 @@ const CheckoutPage: React.FC = () => {
             </div>
 
             {/* Shipping Address */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Shipping Address</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -177,7 +177,7 @@ const CheckoutPage: React.FC = () => {
             </div>
 
             {/* Payment Information */}
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Payment Information</h2>
               <div className="space-y-4">
                 <div>
@@ -242,7 +242,7 @@ const CheckoutPage: React.FC = () => {
 
           {/* Order Summary */}
           <div className="space-y-6">
-            <div className="bg-white rounded-lg shadow-sm border border-gray-200 p-6 sticky top-8">
+            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 sticky top-8">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
               
               <div className="space-y-4 mb-6">

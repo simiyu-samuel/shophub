@@ -16,7 +16,7 @@ const ContactPage: React.FC = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50">
+      <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
         <h2 className="text-3xl font-bold text-gray-900 mb-4">Thank you!</h2>
         <p className="text-gray-600 mb-8">Your message has been received. We'll get back to you soon.</p>
       </div>
@@ -24,8 +24,8 @@ const ContactPage: React.FC = () => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 py-8">
-      <div className="w-full max-w-md bg-white rounded-lg shadow p-8">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 py-8">
+      <div className="w-full max-w-md bg-white dark:bg-gray-800 rounded-lg shadow p-8">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Contact Support</h1>
         <form className="space-y-4" onSubmit={handleSubmit}>
           <div>

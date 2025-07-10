@@ -39,7 +39,7 @@ const ProductDetailPage: React.FC = () => {
     : 0;
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className="min-h-screen bg-white dark:bg-gray-900 text-gray-900 dark:text-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
         {/* Back Button */}
         <button
@@ -80,7 +80,7 @@ const ProductDetailPage: React.FC = () => {
           </div>
 
           {/* Product Info */}
-          <div className="space-y-6">
+          <div className="space-y-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-gray-500">{product.brand}</span>
