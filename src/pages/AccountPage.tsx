@@ -1,18 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Settings, ShoppingBag, Heart, LogOut, MapPin, CreditCard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
 import Button from '../components/UI/Button';
+import { Order } from '../types';
 
 const AccountPage: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
+  const [orders, setOrders] = useState<Order[]>([]);
 
   const handleLogout = () => {
     logout();
     navigate('/');
   };
+
+  useEffect(() => {
+    const saved = localStorage.getItem('orders');
+    if (saved) {
+      setOrders(JSON.parse(saved));
+    }
+  }, []);
 
   if (!user) {
     navigate('/login');
@@ -133,13 +142,48 @@ const AccountPage: React.FC = () => {
               {activeTab === 'orders' && (
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-6">Order History</h3>
-                  <div className="text-center py-12">
-                    <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">No orders yet</p>
-                    <Button className="mt-4" onClick={() => navigate('/products')}>
-                      Start Shopping
-                    </Button>
-                  </div>
+                  {orders.length === 0 ? (
+                    <div className="text-center py-12">
+                      <ShoppingBag className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500">No orders yet</p>
+                      <Button className="mt-4" onClick={() => navigate('/products')}>
+                        Start Shopping
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="space-y-6">
+                      {orders.map(order => (
+                        <div key={order.id} className="border rounded-lg p-4">
+                          <div className="flex flex-col md:flex-row md:items-center md:justify-between mb-2">
+                            <div>
+                              <span className="font-semibold text-gray-900">Order #{order.id.slice(0, 8)}</span>
+                              <span className="ml-4 text-gray-500">{new Date(order.date).toLocaleString()}</span>
+                            </div>
+                            <div className="mt-2 md:mt-0">
+                              <span className="text-sm px-2 py-1 rounded bg-blue-50 text-blue-700 mr-2">{order.status}</span>
+                              <span className="font-semibold text-gray-900">${order.total.toFixed(2)}</span>
+                            </div>
+                          </div>
+                          <div className="mt-2">
+                            <span className="font-medium text-gray-700">Shipping to:</span> {order.shipping.name}, {order.shipping.address}, {order.shipping.city}, {order.shipping.state} {order.shipping.zipCode}
+                          </div>
+                          <div className="mt-4">
+                            <span className="font-medium text-gray-700">Items:</span>
+                            <ul className="mt-2 space-y-1">
+                              {order.items.map(item => (
+                                <li key={item.id} className="flex items-center space-x-2">
+                                  <img src={item.product.image} alt={item.product.name} className="w-8 h-8 object-cover rounded" />
+                                  <span>{item.product.name}</span>
+                                  <span className="text-gray-500">x{item.quantity}</span>
+                                  <span className="ml-auto font-medium">${(item.product.price * item.quantity).toFixed(2)}</span>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
