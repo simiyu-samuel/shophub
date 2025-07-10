@@ -46,7 +46,7 @@ const CheckoutPage: React.FC = () => {
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+        <form onSubmit={handleSubmit} className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           {/* Checkout Form */}
           <div className="space-y-8">
             {/* Contact Information */}
@@ -257,9 +257,9 @@ const CheckoutPage: React.FC = () => {
                 </div>
               </div>
 
-              <Button onClick={handleSubmit} className="w-full" size="lg">
+              <button type="submit" className="w-full btn btn-primary" style={{marginTop: '1rem'}}>
                 Place Order
-              </Button>
+              </button>
 
               <div className="mt-6 flex items-center justify-center space-x-6 text-sm text-gray-500">
                 <div className="flex items-center">
@@ -273,7 +273,7 @@ const CheckoutPage: React.FC = () => {
               </div>
             </div>
           </div>
-        </div>
+        </form>
       </div>
     </div>
   );
