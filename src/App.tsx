@@ -16,6 +16,7 @@ import RegisterPage from './pages/RegisterPage';
 import AccountPage from './pages/AccountPage';
 import WishlistPage from './pages/WishlistPage';
 import NotFoundPage from './pages/NotFoundPage';
+import ContactPage from './pages/ContactPage';
 import { ThemeProvider } from './context/ThemeContext';
 
 function App() {
@@ -40,6 +41,7 @@ function App() {
                       <Route path="/about" element={<AboutPage />} />
                       <Route path="/account" element={<AccountPage />} />
                       <Route path="/wishlist" element={<WishlistPage />} />
+                      <Route path="/contact" element={<ContactPage />} />
                       <Route path="*" element={<NotFoundPage />} />
                     </Routes>
                   </Layout>
