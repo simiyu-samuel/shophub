@@ -34,11 +34,11 @@ const WishlistPage: React.FC = () => {
             <div key={product.id} className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-4 flex flex-col">
               <Link to={`/product/${product.id}`} className="block mb-4">
                 <img src={product.image} alt={product.name} className="w-full h-48 object-cover rounded-md mb-2" />
-                <h3 className="font-semibold text-gray-900 line-clamp-2">{product.name}</h3>
+                <h3 className="font-semibold text-gray-900 dark:text-gray-100 line-clamp-2">{product.name}</h3>
               </Link>
               <div className="flex-1 flex flex-col justify-between">
                 <div className="mb-2">
-                  <span className="text-lg font-bold text-gray-900">${product.price.toFixed(2)}</span>
+                  <span className="text-lg font-bold text-gray-900 dark:text-gray-100">${product.price.toFixed(2)}</span>
                   {product.originalPrice && (
                     <span className="text-sm text-gray-500 line-through ml-2">${product.originalPrice.toFixed(2)}</span>
                   )}

@@ -57,7 +57,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
   const brands = ['AudioTech', 'FitTech', 'StyleCo', 'LightHouse', 'RunPro', 'SoundWave'];
 
   return (
-    <div className="bg-white rounded-lg shadow-sm border border-gray-200">
+    <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-4 mb-8 lg:mb-0">
       {/* Mobile Filter Toggle */}
       <div className="lg:hidden">
         <button
@@ -76,7 +76,7 @@ const ProductFilters: React.FC<ProductFiltersProps> = ({
       <div className={`${isOpen ? 'block' : 'hidden'} lg:block`}>
         <div className="p-4 border-b border-gray-200 lg:border-b-0">
           <div className="flex items-center justify-between">
-            <h3 className="hidden lg:block font-medium text-gray-900">Filters</h3>
+            <h3 className="text-lg font-semibold text-gray-900 dark:text-gray-100 mb-4">Filters</h3>
             <Button
               variant="ghost"
               size="sm"

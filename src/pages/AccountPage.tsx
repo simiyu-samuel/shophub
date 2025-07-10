@@ -266,11 +266,11 @@ const AccountPage: React.FC = () => {
                       </div>
                       {showAddressForm && (
                         <form className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleAddAddress}>
-                          <input name="name" value={addressForm.name} onChange={handleAddressFormChange} placeholder="Full Name" className="px-3 py-2 border rounded" required />
-                          <input name="address" value={addressForm.address} onChange={handleAddressFormChange} placeholder="Address" className="px-3 py-2 border rounded" required />
-                          <input name="city" value={addressForm.city} onChange={handleAddressFormChange} placeholder="City" className="px-3 py-2 border rounded" required />
-                          <input name="state" value={addressForm.state} onChange={handleAddressFormChange} placeholder="State" className="px-3 py-2 border rounded" required />
-                          <input name="zipCode" value={addressForm.zipCode} onChange={handleAddressFormChange} placeholder="ZIP Code" className="px-3 py-2 border rounded" required />
+                          <input name="name" value={addressForm.name} onChange={handleAddressFormChange} placeholder="Full Name" className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required />
+                          <input name="address" value={addressForm.address} onChange={handleAddressFormChange} placeholder="Address" className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required />
+                          <input name="city" value={addressForm.city} onChange={handleAddressFormChange} placeholder="City" className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required />
+                          <input name="state" value={addressForm.state} onChange={handleAddressFormChange} placeholder="State" className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required />
+                          <input name="zipCode" value={addressForm.zipCode} onChange={handleAddressFormChange} placeholder="ZIP Code" className="px-3 py-2 border border-gray-300 dark:border-gray-700 rounded bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100" required />
                           <Button type="submit" className="md:col-span-2">Save Address</Button>
                         </form>
                       )}
