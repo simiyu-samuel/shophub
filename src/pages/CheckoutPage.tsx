@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import { ArrowLeft, CreditCard, Truck, Shield } from 'lucide-react';
 import { useCart } from '../context/CartContext';
 import Button from '../components/UI/Button';
+import { Order } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
 const CheckoutPage: React.FC = () => {
-  const { items, totalPrice } = useCart();
+  const { items, totalPrice, clearCart } = useCart();
   const [formData, setFormData] = useState({
     email: '',
     firstName: '',
@@ -29,8 +31,30 @@ const CheckoutPage: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle checkout logic here
-    alert('Order placed successfully! (Demo)');
+    if (items.length === 0) {
+      alert('Your cart is empty.');
+      return;
+    }
+    // Create new order
+    const newOrder: Order = {
+      id: uuidv4(),
+      date: new Date().toISOString(),
+      items: items,
+      total: totalPrice * 1.08, // include tax
+      status: 'processing',
+      shipping: {
+        name: formData.firstName + ' ' + formData.lastName,
+        address: formData.address,
+        city: formData.city,
+        state: formData.state,
+        zipCode: formData.zipCode,
+      },
+    };
+    // Save to localStorage
+    const prevOrders = JSON.parse(localStorage.getItem('orders') || '[]');
+    localStorage.setItem('orders', JSON.stringify([newOrder, ...prevOrders]));
+    clearCart();
+    alert('Order placed successfully!');
   };
 
   const tax = totalPrice * 0.08;
