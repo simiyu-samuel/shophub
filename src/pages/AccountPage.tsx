@@ -4,7 +4,8 @@ import { User, Settings, ShoppingBag, Heart, LogOut, MapPin, CreditCard } from '
 import { useAuth } from '../context/AuthContext';
 import { useWishlist } from '../context/WishlistContext';
 import Button from '../components/UI/Button';
-import { Order } from '../types';
+import { Order, Address } from '../types';
+import { v4 as uuidv4 } from 'uuid';
 
 const AccountPage: React.FC = () => {
   const { user, logout } = useAuth();
@@ -12,6 +13,9 @@ const AccountPage: React.FC = () => {
   const [activeTab, setActiveTab] = useState('profile');
   const [orders, setOrders] = useState<Order[]>([]);
   const { wishlist, removeFromWishlist } = useWishlist();
+  const [addresses, setAddresses] = useState<Address[]>([]);
+  const [showAddressForm, setShowAddressForm] = useState(false);
+  const [addressForm, setAddressForm] = useState({ name: '', address: '', city: '', state: '', zipCode: '' });
 
   const handleLogout = () => {
     logout();
@@ -22,6 +26,10 @@ const AccountPage: React.FC = () => {
     const saved = localStorage.getItem('orders');
     if (saved) {
       setOrders(JSON.parse(saved));
+    }
+    const savedAddresses = localStorage.getItem('addresses');
+    if (savedAddresses) {
+      setAddresses(JSON.parse(savedAddresses));
     }
   }, []);
 
@@ -38,6 +46,26 @@ const AccountPage: React.FC = () => {
     { id: 'payment', label: 'Payment Methods', icon: CreditCard },
     { id: 'settings', label: 'Settings', icon: Settings }
   ];
+
+  const handleAddressFormChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setAddressForm({ ...addressForm, [e.target.name]: e.target.value });
+  };
+
+  const handleAddAddress = (e: React.FormEvent) => {
+    e.preventDefault();
+    const newAddress: Address = { id: uuidv4(), ...addressForm };
+    const updated = [newAddress, ...addresses];
+    setAddresses(updated);
+    localStorage.setItem('addresses', JSON.stringify(updated));
+    setShowAddressForm(false);
+    setAddressForm({ name: '', address: '', city: '', state: '', zipCode: '' });
+  };
+
+  const handleRemoveAddress = (id: string) => {
+    const updated = addresses.filter(a => a.id !== id);
+    setAddresses(updated);
+    localStorage.setItem('addresses', JSON.stringify(updated));
+  };
 
   return (
     <div className="min-h-screen bg-gray-50 py-8">
@@ -223,11 +251,43 @@ const AccountPage: React.FC = () => {
               {activeTab === 'addresses' && (
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-6">Shipping Addresses</h3>
-                  <div className="text-center py-12">
-                    <MapPin className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">No addresses saved</p>
-                    <Button className="mt-4">Add Address</Button>
-                  </div>
+                  {addresses.length === 0 && !showAddressForm ? (
+                    <div className="text-center py-12">
+                      <MapPin className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500">No addresses saved</p>
+                      <Button className="mt-4" onClick={() => setShowAddressForm(true)}>Add Address</Button>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="mb-6 flex justify-end">
+                        <Button onClick={() => setShowAddressForm(!showAddressForm)}>
+                          {showAddressForm ? 'Cancel' : 'Add Address'}
+                        </Button>
+                      </div>
+                      {showAddressForm && (
+                        <form className="mb-8 grid grid-cols-1 md:grid-cols-2 gap-4" onSubmit={handleAddAddress}>
+                          <input name="name" value={addressForm.name} onChange={handleAddressFormChange} placeholder="Full Name" className="px-3 py-2 border rounded" required />
+                          <input name="address" value={addressForm.address} onChange={handleAddressFormChange} placeholder="Address" className="px-3 py-2 border rounded" required />
+                          <input name="city" value={addressForm.city} onChange={handleAddressFormChange} placeholder="City" className="px-3 py-2 border rounded" required />
+                          <input name="state" value={addressForm.state} onChange={handleAddressFormChange} placeholder="State" className="px-3 py-2 border rounded" required />
+                          <input name="zipCode" value={addressForm.zipCode} onChange={handleAddressFormChange} placeholder="ZIP Code" className="px-3 py-2 border rounded" required />
+                          <Button type="submit" className="md:col-span-2">Save Address</Button>
+                        </form>
+                      )}
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        {addresses.map(addr => (
+                          <div key={addr.id} className="border rounded-lg p-4 flex flex-col">
+                            <div className="mb-2 font-semibold text-gray-900">{addr.name}</div>
+                            <div className="text-gray-700">{addr.address}</div>
+                            <div className="text-gray-700">{addr.city}, {addr.state} {addr.zipCode}</div>
+                            <Button variant="outline" size="sm" className="mt-4 self-end" onClick={() => handleRemoveAddress(addr.id)}>
+                              Remove
+                            </Button>
+                          </div>
+                        ))}
+                      </div>
+                    </>
+                  )}
                 </div>
               )}
 

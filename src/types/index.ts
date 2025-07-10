@@ -57,3 +57,27 @@ export interface Review {
   comment: string;
   date: string;
 }
+
+export interface Order {
+  id: string;
+  date: string;
+  items: CartItem[];
+  total: number;
+  status: 'processing' | 'shipped' | 'delivered';
+  shipping: {
+    name: string;
+    address: string;
+    city: string;
+    state: string;
+    zipCode: string;
+  };
+}
+
+export interface Address {
+  id: string;
+  name: string;
+  address: string;
+  city: string;
+  state: string;
+  zipCode: string;
+}
