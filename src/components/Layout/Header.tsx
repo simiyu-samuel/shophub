@@ -3,6 +3,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { Search, ShoppingCart, User, Menu, X, Heart, Star } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
+import { useWishlist } from '../../context/WishlistContext';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -10,6 +11,7 @@ const Header: React.FC = () => {
   const { totalItems, toggleCart } = useCart();
   const { user, logout } = useAuth();
   const navigate = useNavigate();
+  const { wishlist } = useWishlist();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -71,9 +73,14 @@ const Header: React.FC = () => {
 
           {/* Actions */}
           <div className="flex items-center space-x-4">
-            <button className="hidden sm:block p-2 text-gray-700 hover:text-blue-600 transition-colors">
-              <Heart className="w-6 h-6" />
-            </button>
+            <Link to="/wishlist" className="hidden sm:block p-2 text-gray-700 hover:text-blue-600 transition-colors relative" aria-label="Wishlist">
+              <Heart className={`w-6 h-6 ${wishlist.length > 0 ? 'text-red-500 fill-red-100' : ''}`} fill={wishlist.length > 0 ? 'currentColor' : 'none'} />
+              {wishlist.length > 0 && (
+                <span className="absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {wishlist.length}
+                </span>
+              )}
+            </Link>
             
             <button
               onClick={toggleCart}

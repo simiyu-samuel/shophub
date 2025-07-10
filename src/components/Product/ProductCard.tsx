@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Heart, ShoppingCart, Eye } from 'lucide-react';
 import { Product } from '../../types';
 import { useCart } from '../../context/CartContext';
+import { useWishlist } from '../../context/WishlistContext';
 import StarRating from '../UI/StarRating';
 import Badge from '../UI/Badge';
 import Button from '../UI/Button';
@@ -14,11 +15,18 @@ interface ProductCardProps {
 
 const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) => {
   const { addToCart } = useCart();
+  const { isInWishlist, toggleWishlist } = useWishlist();
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     addToCart(product);
+  };
+
+  const handleWishlist = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    toggleWishlist(product);
   };
 
   const discountPercentage = product.originalPrice 
@@ -50,10 +58,14 @@ const ProductCard: React.FC<ProductCardProps> = ({ product, className = '' }) =>
 
           {/* Quick Actions */}
           <div className="absolute top-3 right-3 flex flex-col gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-            <button className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors">
-              <Heart className="w-4 h-4 text-gray-600" />
+            <button
+              className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors"
+              aria-label={isInWishlist(product.id) ? 'Remove from wishlist' : 'Add to wishlist'}
+              onClick={handleWishlist}
+            >
+              <Heart className={`w-4 h-4 ${isInWishlist(product.id) ? 'text-red-500 fill-red-100' : 'text-gray-600'}`} fill={isInWishlist(product.id) ? 'currentColor' : 'none'} />
             </button>
-            <button className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors">
+            <button className="p-2 bg-white rounded-full shadow-md hover:bg-gray-50 transition-colors" aria-label="Quick view">
               <Eye className="w-4 h-4 text-gray-600" />
             </button>
           </div>
