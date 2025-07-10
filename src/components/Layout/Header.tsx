@@ -1,9 +1,10 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Search, ShoppingCart, User, Menu, X, Heart, Star } from 'lucide-react';
+import { Search, ShoppingCart, User, Menu, X, Heart, Star, Sun, Moon } from 'lucide-react';
 import { useCart } from '../../context/CartContext';
 import { useAuth } from '../../context/AuthContext';
 import { useWishlist } from '../../context/WishlistContext';
+import { useTheme } from '../../context/ThemeContext';
 
 const Header: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -12,6 +13,7 @@ const Header: React.FC = () => {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const { wishlist } = useWishlist();
+  const { theme, toggleTheme } = useTheme();
 
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
@@ -99,6 +101,14 @@ const Header: React.FC = () => {
               className="p-2 text-gray-700 hover:text-blue-600 transition-colors"
             >
               <User className="w-6 h-6" />
+            </button>
+
+            <button
+              onClick={toggleTheme}
+              className="p-2 text-gray-700 hover:text-blue-600 transition-colors"
+              aria-label={theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode'}
+            >
+              {theme === 'dark' ? <Sun className="w-6 h-6" /> : <Moon className="w-6 h-6" />}
             </button>
 
             {/* Mobile menu button */}
