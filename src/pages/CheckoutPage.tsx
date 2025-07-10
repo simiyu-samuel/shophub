@@ -74,7 +74,7 @@ const CheckoutPage: React.FC = () => {
           {/* Checkout Form */}
           <div className="space-y-8">
             {/* Contact Information */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Contact Information</h2>
               <div className="space-y-4">
                 <div>
@@ -94,7 +94,7 @@ const CheckoutPage: React.FC = () => {
             </div>
 
             {/* Shipping Address */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Shipping Address</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
@@ -177,7 +177,7 @@ const CheckoutPage: React.FC = () => {
             </div>
 
             {/* Payment Information */}
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
               <h2 className="text-xl font-semibold text-gray-900 mb-6">Payment Information</h2>
               <div className="space-y-4">
                 <div>
@@ -242,7 +242,7 @@ const CheckoutPage: React.FC = () => {
 
           {/* Order Summary */}
           <div className="space-y-6">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 sticky top-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 sticky top-8">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
               
               <div className="space-y-4 mb-6">

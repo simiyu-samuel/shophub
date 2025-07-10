@@ -80,7 +80,7 @@ const ProductDetailPage: React.FC = () => {
           </div>
 
           {/* Product Info */}
-          <div className="space-y-6 bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <div className="space-y-6 bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6">
             <div>
               <div className="flex items-center justify-between mb-2">
                 <span className="text-sm text-gray-500">{product.brand}</span>

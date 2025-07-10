@@ -7,9 +7,9 @@ import Button from '../components/UI/Button';
 
 const HomePage: React.FC = () => {
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-200">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-800 dark:to-gray-900 py-20">
+      <section className="bg-gradient-to-br from-blue-50 to-indigo-100 dark:from-gray-900 dark:to-gray-800 py-20">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
             <h1 className="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white mb-6">
@@ -35,7 +35,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Features Section */}
-      <section className="py-16 bg-white dark:bg-gray-800">
+      <section className="py-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <div className="text-center">
@@ -103,7 +103,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Featured Products Section */}
-      <section className="py-16 bg-white dark:bg-gray-800">
+      <section className="py-16 bg-white dark:bg-gray-800 rounded-xl shadow-lg">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Featured Products</h2>
@@ -124,7 +124,7 @@ const HomePage: React.FC = () => {
       </section>
 
       {/* Newsletter Section */}
-      <section className="py-16 bg-gray-900">
+      <section className="py-16 bg-gray-900 dark:bg-gray-950">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <h2 className="text-3xl font-bold text-white mb-4">Stay in the Loop</h2>
           <p className="text-gray-300 mb-8 max-w-2xl mx-auto">

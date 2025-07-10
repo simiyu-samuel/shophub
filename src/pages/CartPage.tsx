@@ -101,7 +101,7 @@ const CartPage: React.FC = () => {
 
           {/* Order Summary */}
           <div className="lg:col-span-1">
-            <div className="bg-white dark:bg-gray-800 rounded-lg shadow-sm border border-gray-200 dark:border-gray-700 p-6 sticky top-8">
+            <div className="bg-white dark:bg-gray-800 rounded-xl shadow-lg border border-gray-200 dark:border-gray-700 p-6 sticky top-8">
               <h3 className="text-lg font-semibold text-gray-900 mb-4">Order Summary</h3>
               
               <div className="space-y-3 mb-6">
