@@ -15,6 +15,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AccountPage from './pages/AccountPage';
 import WishlistPage from './pages/WishlistPage';
+import NotFoundPage from './pages/NotFoundPage';
 
 function App() {
   return (
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/about" element={<AboutPage />} />
                     <Route path="/account" element={<AccountPage />} />
                     <Route path="/wishlist" element={<WishlistPage />} />
+                    <Route path="*" element={<NotFoundPage />} />
                   </Routes>
                 </Layout>
               } />
