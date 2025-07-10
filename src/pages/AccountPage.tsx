@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { User, Settings, ShoppingBag, Heart, LogOut, MapPin, CreditCard } from 'lucide-react';
 import { useAuth } from '../context/AuthContext';
+import { useWishlist } from '../context/WishlistContext';
 import Button from '../components/UI/Button';
 import { Order } from '../types';
 
@@ -10,6 +11,7 @@ const AccountPage: React.FC = () => {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState('profile');
   const [orders, setOrders] = useState<Order[]>([]);
+  const { wishlist, removeFromWishlist } = useWishlist();
 
   const handleLogout = () => {
     logout();
@@ -190,13 +192,31 @@ const AccountPage: React.FC = () => {
               {activeTab === 'wishlist' && (
                 <div>
                   <h3 className="text-lg font-semibold text-gray-900 mb-6">Wishlist</h3>
-                  <div className="text-center py-12">
-                    <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
-                    <p className="text-gray-500">No items in your wishlist</p>
-                    <Button className="mt-4" onClick={() => navigate('/products')}>
-                      Browse Products
-                    </Button>
-                  </div>
+                  {wishlist.length === 0 ? (
+                    <div className="text-center py-12">
+                      <Heart className="w-16 h-16 text-gray-300 mx-auto mb-4" />
+                      <p className="text-gray-500">No items in your wishlist</p>
+                      <Button className="mt-4" onClick={() => navigate('/products')}>
+                        Browse Products
+                      </Button>
+                    </div>
+                  ) : (
+                    <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
+                      {wishlist.map(product => (
+                        <div key={product.id} className="bg-gray-50 border rounded-lg p-4 flex flex-col">
+                          <img src={product.image} alt={product.name} className="w-full h-40 object-cover rounded mb-2" />
+                          <h4 className="font-semibold text-gray-900 mb-1">{product.name}</h4>
+                          <p className="text-sm text-gray-500 mb-2">{product.brand}</p>
+                          <div className="flex-1 flex flex-col justify-between">
+                            <span className="text-lg font-bold text-gray-900 mb-2">${product.price.toFixed(2)}</span>
+                            <Button variant="outline" size="sm" onClick={() => removeFromWishlist(product.id)}>
+                              Remove
+                            </Button>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  )}
                 </div>
               )}
 
